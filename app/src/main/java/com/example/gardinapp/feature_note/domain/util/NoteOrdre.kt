@@ -5,4 +5,12 @@ sealed class NoteOrdre(val ordreType: OrdreType) {
     class Date(ordreType: OrdreType) : NoteOrdre(ordreType = ordreType)
     class Color(ordreType: OrdreType) : NoteOrdre(ordreType = ordreType)
 
+    fun copy(ordreType: OrdreType): NoteOrdre{
+        return when(this){
+            is Title -> Title(ordreType = ordreType)
+            is Date -> Date(ordreType = ordreType)
+            is Color -> Color(ordreType = ordreType)
+        }
+    }
+
 }
